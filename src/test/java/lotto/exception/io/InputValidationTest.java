@@ -1,0 +1,42 @@
+package lotto.exception.io;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
+
+import lotto.exception.ErrorMessages;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
+
+class InputValidationTest {
+    @DisplayName("입력값이 null 이거나 빈칸이면 예외를 발생한다")
+    @ParameterizedTest
+    @NullAndEmptySource
+    void should_throwException_when_inputIsNullOrEmpty(String input) {
+        // given//when// then
+        assertThatThrownBy(()->InputValidation.validate(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessages.INVALID_EMPTY_INPUT.getMessage());
+    }
+
+    @DisplayName("입력값에 공백이 들어가면 예외를 발생한다")
+    @ParameterizedTest
+    @ValueSource(strings = {" ","1000 ","1 000"," 1000","1000 "})
+    void should_throwException_when_inputIsWhitespace(String input) {
+        // given//when// then
+        assertThatThrownBy(()->InputValidation.validate(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessages.INVALID_CONTAINS_WHITESPACE.getMessage());
+    }
+
+    @DisplayName("입력값에 공백이 들어가면 예외를 발생한다")
+    @ParameterizedTest
+    @ValueSource(strings = {"a","-","1000원","100@","1000a"})
+    void should_throwException_when_inputIsNumeric(String input) {
+        // given//when// then
+        assertThatThrownBy(()->InputValidation.validate(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessages.INVALID_ONLY_NUMERIC.getMessage());
+    }
+}
