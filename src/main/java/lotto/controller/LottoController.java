@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.model.PurchaseQuantity;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -12,12 +13,17 @@ public class LottoController {
         this.outputView = new OutputView();
     }
 
-    public void run(){
-        while (true){
+    public void run() {
+        PurchaseQuantity purchaseQuantity = tryPurchaseAmount();
+        int quantity = purchaseQuantity.calculateQuantity();
+    }
+
+    private PurchaseQuantity tryPurchaseAmount() {
+        while (true) {
             try {
                 outputView.printPurchaseAmountMessage();
                 inputView.inputPurchaseAmount();
-            }catch (IllegalArgumentException exception){
+            } catch (IllegalArgumentException exception) {
                 outputView.printErrorMessage(exception.getMessage());
             }
         }
