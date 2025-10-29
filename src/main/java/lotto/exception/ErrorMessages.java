@@ -5,8 +5,9 @@ public enum ErrorMessages {
     ERROR_PREFIX("[ERROR]"),
     INVALID_EMPTY_INPUT("빈 값을 입력할 수 없습니다. 다시 입력해 주세요."),
     INVALID_ONLY_NUMERIC("정수만 입력 가능합니다 다시 입력해 주세요."),
-    INVALID_CONTAINS_WHITESPACE("공백을 입력할 수 없습니다. 공백을 제외하고 다시 입력해 주세요.");
-
+    INVALID_CONTAINS_WHITESPACE("공백을 입력할 수 없습니다. 공백을 제외하고 다시 입력해 주세요."),
+    INVALID_NOT_DIVIDE_PURCHASE_AMOUNT("금액은 1000원 단위로 입력해야 합니다"),
+    INVALID_PURCHASE_AMOUNT_MINIMUM("시작 금액은 1000원 부터입니다.");
 
     private final String message;
 
