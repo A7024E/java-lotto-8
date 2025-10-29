@@ -4,7 +4,6 @@ package lotto.model.lottonumberstrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -32,6 +31,17 @@ class LottoNumberStrategyTest {
         // then
         HashSet<Integer> numberSet = new HashSet<>(numbers);
         assertThat(numbers.size()).isEqualTo(numberSet.size()).isBetween(1,45);
+    }
+
+    @DisplayName("생성된 로또 번호가 오름차순인지 확인 ")
+    @Test
+    void sortedLottoNumbers(){
+        // given
+        RandomNumberStrategy randomNumberStrategy = new LottoNumberStrategy();
+        // when
+        List<Integer> numbers = randomNumberStrategy.generateNumbers();
+        // then
+        assertThat(numbers).isSorted();
     }
 
 }
