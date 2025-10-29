@@ -18,11 +18,11 @@ class LottoGeneratorTest {
         List<Lotto> lottos = lottoGenerator.issueLottos(quantity);
         // then
         List<Lotto> compareLottos = List.of(
-                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
-                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
-                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
-                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
-                new Lotto(List.of(1, 2, 3, 4, 5, 6))
+                Lotto.of(List.of(1, 2, 3, 4, 5, 6)),
+                Lotto.of(List.of(1, 2, 3, 4, 5, 6)),
+                Lotto.of(List.of(1, 2, 3, 4, 5, 6)),
+                Lotto.of(List.of(1, 2, 3, 4, 5, 6)),
+                Lotto.of(List.of(1, 2, 3, 4, 5, 6))
         );
 
         assertThat(lottos).hasSize(5).isEqualTo(compareLottos);
