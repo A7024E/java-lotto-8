@@ -2,6 +2,7 @@ package lotto.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import lotto.model.lottonumberstrategy.RandomNumberStrategy;
 
 public class LottoGenerator {
@@ -28,4 +29,20 @@ public class LottoGenerator {
         return new Lotto(numbers);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        LottoGenerator that = (LottoGenerator) o;
+        return Objects.equals(randomNumberStrategy, that.randomNumberStrategy);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(randomNumberStrategy);
+    }
 }
