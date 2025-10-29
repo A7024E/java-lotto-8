@@ -1,10 +1,12 @@
 package lotto.exception.io;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 import lotto.exception.ErrorMessages;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -38,5 +40,16 @@ class InputValidationTest {
         assertThatThrownBy(()->InputValidation.validate(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessages.INVALID_ONLY_NUMERIC.getMessage());
+    }
+
+    @DisplayName("입력값이 Null 또는 빈칸이 아니고 공백없이 숫자로만 이뤄경우 예외가 발생하지 않는다")
+    @Test
+    void should_notThrowException_when_inputIsNumericWithoutWhitespace(){
+        // given
+        String input = "1000";
+
+        // when// then
+        assertThatCode(()->InputValidation.validate(input))
+                .doesNotThrowAnyException();
     }
 }
