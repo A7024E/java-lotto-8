@@ -1,5 +1,6 @@
 package lotto.model;
 
+import java.util.Objects;
 import lotto.exception.ErrorMessages;
 
 public class PurchaseQuantity {
@@ -25,5 +26,22 @@ public class PurchaseQuantity {
         if(quantity < 1000){
             throw new IllegalArgumentException(ErrorMessages.INVALID_PURCHASE_AMOUNT_MINIMUM.getMessage());
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        PurchaseQuantity that = (PurchaseQuantity) o;
+        return quantity == that.quantity;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(quantity);
     }
 }
