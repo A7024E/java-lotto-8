@@ -105,6 +105,7 @@
   - 수익률은 천단위부터 콤마로 구분하여 출력한다 예시 : (5,000원)
 - [ ] 예외 상황시 에러문구를 출력한다.
     - 에러 문구는 "[ERROR]" 로 시작해야 한다 
+    - - `Exception`이 아닌 `llegalArgumentException`, `IllegalStateException` 등과 같은 명확한 유형으로 처리해야 한다.
 
 
 ### 공통 예외 상황
