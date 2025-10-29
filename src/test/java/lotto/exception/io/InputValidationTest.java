@@ -15,7 +15,7 @@ class InputValidationTest {
     @DisplayName("입력값이 null 이거나 빈칸이면 예외를 발생한다")
     @ParameterizedTest
     @NullAndEmptySource
-    void should_throwException_when_inputIsNullOrEmpty(String input) {
+    void inputIsNullOrEmpty(String input) {
         // given//when// then
         assertThatThrownBy(()->InputValidation.validate(input))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -25,7 +25,7 @@ class InputValidationTest {
     @DisplayName("입력값에 공백이 들어가면 예외를 발생한다")
     @ParameterizedTest
     @ValueSource(strings = {" ","1000 ","1 000"," 1000","1000 "})
-    void should_throwException_when_inputIsWhitespace(String input) {
+    void inputIsWhitespace(String input) {
         // given//when// then
         assertThatThrownBy(()->InputValidation.validate(input))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -35,7 +35,7 @@ class InputValidationTest {
     @DisplayName("입력값에 공백이 들어가면 예외를 발생한다")
     @ParameterizedTest
     @ValueSource(strings = {"a","-","1000원","100@","1000a"})
-    void should_throwException_when_inputIsNumeric(String input) {
+    void inputIsNumeric(String input) {
         // given//when// then
         assertThatThrownBy(()->InputValidation.validate(input))
                 .isInstanceOf(IllegalArgumentException.class)
