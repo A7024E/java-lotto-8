@@ -10,7 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class LottoNumberStrategyTest {
-    @DisplayName("1부터 45까지 랜덤한 숫자를 생성한다")
+    @DisplayName("1부터 45까지 범위에 맞게 생성하는지 테스트")
     @Test
     void generateNumbers(){
         // given
