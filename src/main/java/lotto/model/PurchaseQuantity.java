@@ -19,6 +19,10 @@ public class PurchaseQuantity {
         return quantity / 1000;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
     private void validate(int quantity) {
         if(quantity % 1000 != 0) {
             throw new IllegalArgumentException(ErrorMessages.INVALID_NOT_DIVIDE_PURCHASE_AMOUNT.getMessage());
