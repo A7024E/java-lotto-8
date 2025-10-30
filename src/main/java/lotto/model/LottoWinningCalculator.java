@@ -16,4 +16,5 @@ public class LottoWinningCalculator {
         Map<LottoRank, Integer> lottoResults = lottos.calculateResults(winningNumbers);
         return LottoWinningResults.from(lottoResults);
     }
+
 }
