@@ -22,6 +22,6 @@ public enum ErrorMessages {
     }
 
     public String getMessage() {
-        return ERROR_PREFIX.message+this.message;
+        return ERROR_PREFIX.message + this.message;
     }
 }

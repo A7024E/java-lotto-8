@@ -24,7 +24,7 @@ public class InputValidation {
 
     public static void validateDelimiter(String input) {
         if (!input.matches("^-?\\d+(,-?\\d+)*$")) {
-            throw new IllegalArgumentException("당첨 번호는 공백없이 쉼표로 구분된 정수들로 입력해야 합니다.");
+            throw new IllegalArgumentException(ErrorMessages.INVALID_WINNING_NUMBER_DELIMITER.getMessage());
         }
     }
 

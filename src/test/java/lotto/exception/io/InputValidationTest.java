@@ -75,5 +75,25 @@ class InputValidationTest {
                 .doesNotThrowAnyException();
     }
 
+    @DisplayName("쉼표가 아닌 구분자가 입력되면 예외를 발생시킨다")
+    @ParameterizedTest
+    @ValueSource(strings = {"1.2.3.4.5.6","1,,2,3,4,5,6","1,2,3,4.5,6"})
+    void inputInvalidDelimiter(String input) {
+        // when// then
+        assertThatThrownBy(()->InputValidation.validateDelimiter(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessages.INVALID_WINNING_NUMBER_DELIMITER.getMessage());
+    }
+
+    @DisplayName("입력값이 정확한 정수값을 입력할 경우 예외를 발생핮지않는다")
+    @Test
+    void nonErrorDelimiter() {
+        // given
+        String input = "1,2,3,4,5,6";
+
+        // when// then
+        assertThatCode(()->InputValidation.validateDelimiter(input))
+                .doesNotThrowAnyException();
+    }
 
 }
