@@ -24,6 +24,15 @@ public class LottoController {
 
         List<Lotto> lottos = issueLottos(quantity);
         outputView.printLottos(lottos);
+        while (true){
+            try {
+                outputView.printWinningNumberMessage();
+                inputView.inputWinningNumber();
+            }catch (IllegalArgumentException exception){
+                outputView.printErrorMessage(exception.getMessage());
+            }
+        }
+
 
     }
 

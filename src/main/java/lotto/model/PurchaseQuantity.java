@@ -26,6 +26,7 @@ public class PurchaseQuantity {
         if(quantity < 1000){
             throw new IllegalArgumentException(ErrorMessages.INVALID_PURCHASE_AMOUNT_MINIMUM.getMessage());
         }
+
     }
 
     @Override

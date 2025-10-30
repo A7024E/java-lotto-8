@@ -22,6 +22,10 @@ public class OutputView {
         System.out.println(LINE_SEPARATOR);
     }
 
+    public void printWinningNumberMessage(){
+        System.out.println("당첨 번호를 입력해 주세요.");
+    }
+
     public void printErrorMessage(String exceptionMessage) {
         System.out.println(exceptionMessage);
     }
