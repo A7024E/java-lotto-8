@@ -1,5 +1,6 @@
 package lotto.model;
 
+import java.util.Objects;
 import lotto.exception.ErrorMessages;
 
 public class BonusNumber {
@@ -19,6 +20,17 @@ public class BonusNumber {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        BonusNumber that = (BonusNumber) o;
+        return bonusNumber == that.bonusNumber;
+    }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(bonusNumber);
+    }
 }
