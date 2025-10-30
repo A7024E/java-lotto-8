@@ -27,7 +27,10 @@ public class LottoController {
         while (true){
             try {
                 outputView.printWinningNumberMessage();
-                inputView.inputWinningNumber();
+                List<Integer> inputWinningNumbers = inputView.inputWinningNumber();
+                int inputBonusNumber = inputView.inputBonusNumber();
+
+
             }catch (IllegalArgumentException exception){
                 outputView.printErrorMessage(exception.getMessage());
             }

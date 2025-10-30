@@ -22,5 +22,9 @@ public class InputView {
         return Converter.toIntList(inputs);
     }
 
+    public int inputBonusNumber(){
+        return Converter.toInt(Console.readLine());
+    }
+
 
 }
