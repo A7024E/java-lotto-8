@@ -1,7 +1,9 @@
 package lotto.model;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import lotto.exception.ErrorMessages;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -16,13 +18,35 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+        validateLottoSize(numbers);
+        validateDuplicates(numbers);
+        validateNumbersRange(numbers);
+    }
+
+    private static void validateLottoSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
+            throw new IllegalArgumentException(ErrorMessages.INVALID_LOTTO_NUMBER_SIZE.getMessage());
         }
     }
 
-    // TODO: 추가 기능 구현
+    private static void validateDuplicates(List<Integer> numbers) {
+        HashSet<Integer> set = new HashSet<>(numbers);
+        if (set.size() != numbers.size()) {
+            throw new IllegalArgumentException(ErrorMessages.INVALID_LOTTO_NUMBER_DUPLICATES.getMessage());
+        }
+    }
 
+    private static void validateNumbersRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if(number < 1 || number > 45) {
+                throw new IllegalArgumentException(ErrorMessages.INVALID_LOTTO_NUMBER_RANGE.getMessage());
+            }
+        }
+    }
+
+    public List<Integer> getNumbers() {
+        return List.copyOf(numbers);
+    }
 
     @Override
     public boolean equals(Object o) {
