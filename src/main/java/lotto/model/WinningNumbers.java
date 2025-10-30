@@ -24,22 +24,10 @@ public class WinningNumbers {
         return LottoRank.matchRank(matchCount, bonusMatch);
     }
 
-    public int countMatchingNumbers(Lotto lotto) {
-        return winningNumbers.countMatches(lotto);
-    }
-
-    public boolean isMatchBonusNumber(Lotto lotto) {
-        return bonusNumber.isMatches(lotto);
-    }
-
     private void validateDuplicate(Lotto winningLotto, int bonusNumber) {
         if (winningLotto.isDuplicateBonusNumber(bonusNumber)) {
             throw new IllegalArgumentException(ErrorMessages.INVALID_BONUS_NUMBER_DUPLICATE.getMessage());
         }
-    }
-
-    public int bonus() {
-        return bonusNumber.value();
     }
 
     @Override

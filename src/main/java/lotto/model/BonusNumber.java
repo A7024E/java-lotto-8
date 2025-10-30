@@ -4,7 +4,7 @@ import java.util.Objects;
 import lotto.exception.ErrorMessages;
 
 public class BonusNumber {
-    private int bonusNumber;
+    private final int bonusNumber;
 
     private BonusNumber(int bonusNumber) {
         validateBonusNumberRange(bonusNumber);
@@ -19,16 +19,10 @@ public class BonusNumber {
         return winningLotto.isDuplicateBonusNumber(bonusNumber);
     }
 
-
-    private static void validateBonusNumberRange(int bonusNumber){
-        if(bonusNumber < 1 || bonusNumber > 45){
+    private static void validateBonusNumberRange(int bonusNumber) {
+        if (bonusNumber < 1 || bonusNumber > 45) {
             throw new IllegalArgumentException(ErrorMessages.INVALID_BONUS_NUMBER_RANGE.getMessage());
         }
-    }
-
-
-    public int value(){
-        return bonusNumber;
     }
 
     @Override
