@@ -20,8 +20,11 @@ public class LottoController {
     public void run() {
         PurchaseQuantity purchaseQuantity = tryPurchaseAmount();
         int quantity = purchaseQuantity.calculateQuantity();
+        outputView.printQuantity(quantity);
 
-        issueLottos(quantity);
+        List<Lotto> lottos = issueLottos(quantity);
+        outputView.printLottos(lottos);
+
     }
 
     private List<Lotto> issueLottos(int quantity) {
@@ -33,7 +36,8 @@ public class LottoController {
         while (true) {
             try {
                 outputView.printPurchaseAmountMessage();
-                inputView.inputPurchaseAmount();
+                int inputPurchaseAmount = inputView.inputPurchaseAmount();
+                return PurchaseQuantity.from(inputPurchaseAmount);
             } catch (IllegalArgumentException exception) {
                 outputView.printErrorMessage(exception.getMessage());
             }
