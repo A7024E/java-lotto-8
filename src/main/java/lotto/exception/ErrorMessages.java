@@ -14,7 +14,8 @@ public enum ErrorMessages {
     INVALID_WINNING_NUMBER_DELIMITER("당첨 번호는 공백없이 쉼표로 구분된 정수들로 입력해야 합니다."),
     INVALID_WINNING_NUMBER_RANGE("당첨 번호는 1부터 45까지만 입력 가능합니다."),
     INVALID_WINNING_NUMBER_DUPLICATE("중복된 당첨 번호를 입력할수 없습니다."),
-    INVALID_BONUS_NUMBER_RANGE("보너스 번호는 1부터 45까지만 입력 가능합니다");
+    INVALID_BONUS_NUMBER_RANGE("보너스 번호는 1부터 45까지만 입력 가능합니다"),
+    INVALID_BONUS_NUMBER_DUPLICATE_WINNING_NUMBER("보너스 번호는 당첨번호와 중복될수 없습니다");
 
     private final String message;
 
