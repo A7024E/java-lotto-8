@@ -14,14 +14,14 @@ public class LottoWinningResults {
         return new LottoWinningResults(lottoRankResults);
     }
 
-    public double calculateTotalWinningPrice(int purchaseAmount) {
+    public double calculateTotalWinningPrice(PurchaseQuantity purchaseAmount) {
         long totalWinningPrice = 0;
         for (Entry<LottoRank, Integer> lottoRankIntegerEntry : lottoRankResults.entrySet()) {
             LottoRank rank = lottoRankIntegerEntry.getKey();
             int count = lottoRankIntegerEntry.getValue();
             totalWinningPrice+= rank.getWinningAmount() * count;
         }
-        return (double) totalWinningPrice / purchaseAmount * 100;
+        return (double) totalWinningPrice / purchaseAmount.getQuantity() * 100;
     }
 
     public Map<LottoRank, Integer> getLottoRankResults() {

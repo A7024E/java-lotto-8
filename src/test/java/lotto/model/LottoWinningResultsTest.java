@@ -18,7 +18,7 @@ class LottoWinningResultsTest {
         LottoWinningResults results = LottoWinningResults.from(lottoRank);
         PurchaseQuantity quantity = PurchaseQuantity.from(8000);
         // when
-        double prize = results.calculateTotalWinningPrice(quantity.getQuantity());
+        double prize = results.calculateTotalWinningPrice(quantity);
         // then
         assertThat(prize).isEqualTo(62.5);
 

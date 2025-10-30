@@ -38,7 +38,7 @@ public class LottoController {
         outputView.printWinningResultMessage();
         outputView.printLottoWinningResult(winningResult.getLottoRankResults());
 
-        double prize = winningResult.calculateTotalWinningPrice(quantity);
+        double prize = winningResult.calculateTotalWinningPrice(purchaseQuantity);
         outputView.printRateOrReturn(prize);
     }
 
