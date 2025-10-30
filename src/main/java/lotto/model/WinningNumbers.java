@@ -19,12 +19,12 @@ public class WinningNumbers {
     }
 
     public void validateWinningNumbers(List<Integer> winningNumbers,int bonusNumber) {
-        if(isDuplicateBonusNumber(winningNumbers, bonusNumber)){
+        if(isContainBonusNumber(winningNumbers, bonusNumber)){
             throw new IllegalArgumentException(ErrorMessages.INVALID_BONUS_NUMBER_DUPLICATE.getMessage());
         }
     }
 
-    public static boolean isDuplicateBonusNumber(List<Integer> winningNumbers, int bonusNumber) {
+    public boolean isContainBonusNumber(List<Integer> winningNumbers, int bonusNumber) {
         return winningNumbers.contains(bonusNumber);
     }
 
