@@ -4,6 +4,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
 import lotto.exception.ErrorMessages;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,6 +31,18 @@ class BonusNumberTest {
         assertThatThrownBy(()-> BonusNumber.of(bonus))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessages.INVALID_BONUS_NUMBER_RANGE.getMessage());
+    }
+
+    @DisplayName("보너스 번호가 로또 번호와 일치하면 true를 반환한다.")
+    @Test
+    void isMatch() {
+        // given
+        Lotto lotto = Lotto.of(List.of(1,2,3,4,5,6));
+        BonusNumber bonusNumber = BonusNumber.of(2);
+        // when
+        boolean matches = bonusNumber.isMatches(lotto);
+        // then
+        assertThat(matches).isTrue();
     }
 
 }
