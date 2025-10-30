@@ -85,7 +85,7 @@ class InputValidationTest {
                 .hasMessage(ErrorMessages.INVALID_WINNING_NUMBER_DELIMITER.getMessage());
     }
 
-    @DisplayName("입력값이 정확한 정수값을 입력할 경우 예외를 발생핮지않는다")
+    @DisplayName("입력값이 정확한 정수값을 입력할 경우 예외를 발생하지않는다")
     @Test
     void nonErrorDelimiter() {
         // given
