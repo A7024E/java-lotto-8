@@ -18,12 +18,18 @@ public class InputView {
     public List<Integer> inputWinningNumber(){
         String input = Console.readLine();
         String[] inputs = input.split(",");
+        InputValidation.validateNullOrEmpty(input);
+        InputValidation.validateBlankContains(input);
         InputValidation.validateDelimiter(input);
         return Converter.toIntList(inputs);
     }
 
     public int inputBonusNumber(){
-        return Converter.toInt(Console.readLine());
+        String input = Console.readLine();
+        InputValidation.validateNullOrEmpty(input);
+        InputValidation.validateBlankContains(input);
+        InputValidation.validateNumeric(input);
+        return Converter.toInt(input);
     }
 
 

@@ -1,9 +1,11 @@
 package lotto.controller;
 
 import java.util.List;
+import lotto.model.BonusNumber;
 import lotto.model.Lotto;
 import lotto.model.LottoGenerator;
 import lotto.model.PurchaseQuantity;
+import lotto.model.WinningNumbers;
 import lotto.model.lottonumberstrategy.LottoNumberStrategy;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -24,19 +26,23 @@ public class LottoController {
 
         List<Lotto> lottos = issueLottos(quantity);
         outputView.printLottos(lottos);
+        tryWinningNumbers();
+
+
+    }
+
+    private WinningNumbers tryWinningNumbers() {
         while (true){
             try {
                 outputView.printWinningNumberMessage();
                 List<Integer> inputWinningNumbers = inputView.inputWinningNumber();
+                outputView.printBonusMessage();
                 int inputBonusNumber = inputView.inputBonusNumber();
-
-
+                return WinningNumbers.from(inputWinningNumbers, inputBonusNumber);
             }catch (IllegalArgumentException exception){
                 outputView.printErrorMessage(exception.getMessage());
             }
         }
-
-
     }
 
     private List<Lotto> issueLottos(int quantity) {

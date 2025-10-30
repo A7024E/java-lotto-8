@@ -7,6 +7,7 @@ public class BonusNumber {
     private int bonusNumber;
 
     private BonusNumber(int bonusNumber) {
+        validateBonusNumberRange(bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
