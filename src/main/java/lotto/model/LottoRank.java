@@ -38,6 +38,8 @@ public enum LottoRank {
     }
 
 
+
+
     public String getDescription() {
         return description;
     }

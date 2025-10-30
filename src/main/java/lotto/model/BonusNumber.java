@@ -15,10 +15,20 @@ public class BonusNumber {
         return new BonusNumber(bonusNumber);
     }
 
+    public boolean isMatches(Lotto winningLotto) {
+        return winningLotto.isDuplicateBonusNumber(bonusNumber);
+    }
+
+
     private static void validateBonusNumberRange(int bonusNumber){
         if(bonusNumber < 1 || bonusNumber > 45){
             throw new IllegalArgumentException(ErrorMessages.INVALID_BONUS_NUMBER_RANGE.getMessage());
         }
+    }
+
+
+    public int value(){
+        return bonusNumber;
     }
 
     @Override

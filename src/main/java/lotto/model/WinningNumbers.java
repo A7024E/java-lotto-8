@@ -5,27 +5,41 @@ import java.util.Objects;
 import lotto.exception.ErrorMessages;
 
 public class WinningNumbers {
-    private List<Integer> winningNumbers;
+    private Lotto winningNumbers;
     private BonusNumber bonusNumber;
 
-    private WinningNumbers(List<Integer> winningNumbers, int bonusNumber) {
-        validateWinningNumbers(winningNumbers,bonusNumber);
+    private WinningNumbers(Lotto winningNumbers, int bonusNumber) {
+        validateDuplicate(winningNumbers,bonusNumber);
         this.winningNumbers = winningNumbers;
         this.bonusNumber = BonusNumber.of(bonusNumber);
     }
 
-    public static WinningNumbers from(List<Integer> winningNumbers, int bonusNumber) {
-        return new WinningNumbers(winningNumbers, bonusNumber);
+    public static WinningNumbers of(Lotto winningLotto, int bonusNumber) {
+        return new WinningNumbers(winningLotto, bonusNumber);
     }
 
-    public void validateWinningNumbers(List<Integer> winningNumbers,int bonusNumber) {
-        if(isContainBonusNumber(winningNumbers, bonusNumber)){
+    public LottoRank calculateRank(Lotto lotto) {
+        int matchCount = winningNumbers.countMatches(lotto);
+        boolean bonusMatch = bonusNumber.isMatches(lotto);
+        return LottoRank.matchRank(matchCount, bonusMatch);
+    }
+
+    public int countMatchingNumbers(Lotto lotto) {
+        return winningNumbers.countMatches(lotto);
+    }
+
+    public boolean isMatchBonusNumber(Lotto lotto) {
+        return bonusNumber.isMatches(lotto);
+    }
+
+    private void validateDuplicate(Lotto winningLotto, int bonusNumber) {
+        if (winningLotto.isDuplicateBonusNumber(bonusNumber)) {
             throw new IllegalArgumentException(ErrorMessages.INVALID_BONUS_NUMBER_DUPLICATE.getMessage());
         }
     }
 
-    public boolean isContainBonusNumber(List<Integer> winningNumbers, int bonusNumber) {
-        return winningNumbers.contains(bonusNumber);
+    public int bonus() {
+        return bonusNumber.value();
     }
 
     @Override

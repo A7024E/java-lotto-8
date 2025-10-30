@@ -44,6 +44,20 @@ public class Lotto {
         }
     }
 
+    public int countMatches(Lotto winningLotto) {
+        return (int) numbers.stream()
+                .filter(winningLotto::isContains)
+                .count();
+    }
+
+    public boolean isDuplicateBonusNumber(int bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
+
+    private boolean isContains(Integer number) {
+        return this.numbers.contains(number);
+    }
+
     public List<Integer> getNumbers() {
         return List.copyOf(numbers);
     }
