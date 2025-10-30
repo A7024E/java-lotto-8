@@ -16,12 +16,12 @@ class WinningNumbersTest {
     @Test
     void generateWinningNumbers() {
         // given
-        List<Integer> inputWinningNumbers = List.of(1,2,3,4,5,6);
+        Lotto inputWinningNumbers = Lotto.of(List.of(1,2,3,4,5,6));
         int bonusNumber = 7;
         // when
-        WinningNumbers winningNumbers = WinningNumbers.from(inputWinningNumbers, bonusNumber);
+        WinningNumbers winningNumbers = WinningNumbers.of(inputWinningNumbers, bonusNumber);
         // then
-        assertThat(winningNumbers).isEqualTo(WinningNumbers.from(inputWinningNumbers, bonusNumber));
+        assertThat(winningNumbers).isEqualTo(WinningNumbers.of(inputWinningNumbers, bonusNumber));
     }
 
     @DisplayName("당첨 번호와 보너스 번호가 중복된다면 예외를 발생시킨다")
@@ -29,7 +29,7 @@ class WinningNumbersTest {
     @ValueSource(ints = {1,2,3,4,5,6})
     void duplicateWinningNumbers(int numbers) {
         // when// then
-        assertThatThrownBy(()->WinningNumbers.from(List.of(1,2,3,4,5,6), numbers))
+        assertThatThrownBy(()->WinningNumbers.of(Lotto.of(List.of(1,2,3,4,5,6)), numbers))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessages.INVALID_BONUS_NUMBER_DUPLICATE.getMessage());
     }
@@ -39,7 +39,7 @@ class WinningNumbersTest {
     @ValueSource(ints = {7,8,9,10,11,12})
     void notDuplicateWinningNumbers(int numbers) {
         // when// then
-        assertThatCode(()->WinningNumbers.from(List.of(1,2,3,4,5,6), numbers))
+        assertThatCode(()->WinningNumbers.of(Lotto.of(List.of(1,2,3,4,5,6)), numbers))
                 .doesNotThrowAnyException();
     }
 
