@@ -28,9 +28,12 @@ public enum LottoRank {
     }
 
     private static boolean isMatching(int matchCount, boolean bonus, LottoRank lottoRank) {
-        return lottoRank.lottoRankMatcher.matchRank(matchCount, bonus);
+        return extractMatcher(lottoRank).matchRank(matchCount, bonus);
     }
 
+    private static LottoRankMatcher extractMatcher(LottoRank lottoRank) {
+        return lottoRank.lottoRankMatcher;
+    }
 
     public String getDescription() {
         return description;
