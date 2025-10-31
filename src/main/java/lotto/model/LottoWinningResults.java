@@ -33,6 +33,6 @@ public class LottoWinningResults {
     }
 
     public Map<LottoRank, Integer> getLottoRankResults() {
-        return lottoRankResults;
+        return Map.copyOf(lottoRankResults);
     }
 }
