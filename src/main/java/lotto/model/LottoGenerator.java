@@ -27,7 +27,7 @@ public class LottoGenerator {
 
     private Lotto issue() {
         List<Integer> numbers = randomNumberStrategy.generateNumbers();
-        return Lotto.of(numbers);
+        return Lotto.from(numbers);
     }
 
     @Override
