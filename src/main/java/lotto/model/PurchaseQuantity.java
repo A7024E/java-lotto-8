@@ -30,6 +30,9 @@ public class PurchaseQuantity {
         if(quantity < 1000){
             throw new IllegalArgumentException(ErrorMessages.INVALID_PURCHASE_AMOUNT_MINIMUM.getMessage());
         }
+        if(quantity > 100000){
+            throw new IllegalArgumentException(ErrorMessages.INVALID_PURCHASE_AMOUNT_OVER_LIMIT.getMessage());
+        }
 
     }
 
