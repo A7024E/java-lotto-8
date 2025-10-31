@@ -9,10 +9,13 @@ public class OutputFormatter {
 
     private static final String LINE_SEPARATOR = System.lineSeparator();
     private static final String RATE_OF_RETURN_FORMAT = "총 수익률은 %,.1f%%입니다.";
-    private static final long MISS = 0L;
+    private static final String PURCHASE_QUANTITY_FORMAT = "%s%d개를 구매했습니다.";
+    private static final String RESULT_SEPARATOR = " - ";
+    private static final String LOTTO_COUNT_UNIT = "개";
+    private static final long NO_REWARD = 0L;
 
     public static String formatingQuantity(int quantity) {
-        return String.format("%s%d개를 구매했습니다.", LINE_SEPARATOR, quantity);
+        return String.format(PURCHASE_QUANTITY_FORMAT, LINE_SEPARATOR, quantity);
     }
 
     public static String formatingWinningResult(Map<LottoRank, Integer> winningResult) {
@@ -31,13 +34,13 @@ public class OutputFormatter {
     }
 
     private static boolean isWinningAmount(LottoRank lottoRank) {
-        return lottoRank.getWinningAmount() > MISS;
+        return lottoRank.getWinningAmount() > NO_REWARD;
     }
 
     private static String createFormat(Map<LottoRank, Integer> winningResult, LottoRank lottoRank) {
         String lottoDescription = lottoRank.getDescription();
         Integer winningCount = winningResult.getOrDefault(lottoRank, 0);
 
-        return lottoDescription + " - " + winningCount + "개";
+        return lottoDescription + RESULT_SEPARATOR + winningCount + LOTTO_COUNT_UNIT;
     }
 }
