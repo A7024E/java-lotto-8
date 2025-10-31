@@ -39,13 +39,9 @@ public class Lotto {
     }
 
     private static void validateLottoSize(List<Integer> numbers) {
-        if (isLottoNumberSize(numbers)) {
+        if (isLottoSize(numbers)) {
             throw new IllegalArgumentException(ErrorMessages.INVALID_LOTTO_NUMBER_SIZE.getMessage());
         }
-    }
-
-    private static boolean isLottoNumberSize(List<Integer> numbers) {
-        return numbers.size() != LOTTO_NUMBER_COUNT;
     }
 
     private static void validateDuplicates(List<Integer> numbers) {
@@ -57,17 +53,21 @@ public class Lotto {
 
     private static void validateNumbersRange(List<Integer> numbers) {
         for (Integer number : numbers) {
-            if(isNumberRange(number)) {
+            if(isRange(number)) {
                 throw new IllegalArgumentException(ErrorMessages.INVALID_LOTTO_NUMBER_RANGE.getMessage());
             }
         }
+    }
+
+    private static boolean isLottoSize(List<Integer> numbers) {
+        return numbers.size() != LOTTO_NUMBER_COUNT;
     }
 
     private static boolean isSameSize(List<Integer> numbers, HashSet<Integer> duplicateNumbers) {
         return duplicateNumbers.size() != numbers.size();
     }
 
-    private static boolean isNumberRange(Integer number) {
+    private static boolean isRange(Integer number) {
         return number < LOTTO_MIN_NUMBER || number > LOTTO_MAX_NUMBER;
     }
 
