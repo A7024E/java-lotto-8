@@ -42,7 +42,7 @@ public class OutputView {
 
     public void printRateOrReturn(double rateOfReturn) {
         String formatRateOfReturn = OutputFormatter.formatingRateOfReturn(rateOfReturn);
-        System.out.println("총 수익률은 " + formatRateOfReturn + "%입니다.");
+        System.out.println(formatRateOfReturn);
     }
 
 

@@ -8,7 +8,7 @@ import lotto.model.LottoRank;
 public class OutputFormatter {
 
     private static final String LINE_SEPARATOR = System.lineSeparator();
-    private static final String RATE_OF_RETURN_FORMAT = "%,.1f";
+    private static final String RATE_OF_RETURN_FORMAT = "총 수익률은 %,.1f%%입니다.";
     private static final long MISS = 0L;
 
     public static String formatingQuantity(int quantity) {
