@@ -58,10 +58,8 @@ class OutputFormatterTest {
     void formatingRateOfReturnComma() {
         //given
         double rateOfReturn = 1000000.0;
-
         //when
         String formatingRateOfReturn = OutputFormatter.formatingRateOfReturn(rateOfReturn);
-
         //then
         assertThat(formatingRateOfReturn).isEqualTo("총 수익률은 1,000,000.0%입니다.");
     }

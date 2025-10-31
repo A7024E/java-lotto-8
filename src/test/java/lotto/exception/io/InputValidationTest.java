@@ -95,5 +95,4 @@ class InputValidationTest {
         assertThatCode(()->InputValidation.validateDelimiter(input))
                 .doesNotThrowAnyException();
     }
-
 }

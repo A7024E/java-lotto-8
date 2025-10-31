@@ -5,7 +5,6 @@ import java.util.Map;
 public class LottoWinningCalculator {
 
     private LottoWinningCalculator() {
-
     }
 
     public static LottoWinningCalculator create() {

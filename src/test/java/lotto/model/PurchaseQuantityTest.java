@@ -20,7 +20,6 @@ class PurchaseQuantityTest {
         PurchaseAmount purchaseQuantity = PurchaseAmount.from(value);
         // then
         assertThat(purchaseQuantity).isEqualTo(PurchaseAmount.from(value));
-
     }
 
     @DisplayName("구입 금액이 1000원 단위로 나누어 떨어지지 않으면 예외가 발생한다")
@@ -30,7 +29,6 @@ class PurchaseQuantityTest {
         // given// when// then
         assertThatThrownBy(() -> PurchaseAmount.from(amount))
                 .isInstanceOf(IllegalArgumentException.class);
-
     }
 
     @DisplayName("구입 금액을 계산할수있다")

@@ -28,7 +28,6 @@ class LottoWinningCalculatorTest {
                 LottoRank.FIRST, 1,
                 LottoRank.MISS, 1
         );
-
         assertThat(lottoWinningResults.getLottoRankResults())
                 .isEqualTo(result);
     }

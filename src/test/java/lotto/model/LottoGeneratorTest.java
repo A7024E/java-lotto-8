@@ -24,8 +24,6 @@ class LottoGeneratorTest {
                 Lotto.from(List.of(1, 2, 3, 4, 5, 6)),
                 Lotto.from(List.of(1, 2, 3, 4, 5, 6))
         );
-
         assertThat(lottos.getLottos()).hasSize(5).isEqualTo(compareLottos);
-
     }
 }

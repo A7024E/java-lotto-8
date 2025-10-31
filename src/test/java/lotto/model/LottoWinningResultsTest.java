@@ -20,6 +20,5 @@ class LottoWinningResultsTest {
         double prize = results.calculateRateOfReturn(quantity);
         // then
         assertThat(prize).isEqualTo(62.5);
-
     }
 }
