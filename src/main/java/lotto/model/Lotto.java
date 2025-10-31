@@ -9,6 +9,10 @@ public class Lotto {
 
     private final List<Integer> numbers;
 
+    private static final int LOTTO_NUMBER_COUNT = 6;
+    private static final int LOTTO_MIN_NUMBER = 1;
+    private static final int LOTTO_MAX_NUMBER = 45;
+
     protected Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
@@ -24,27 +28,6 @@ public class Lotto {
         validateNumbersRange(numbers);
     }
 
-    private static void validateLottoSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException(ErrorMessages.INVALID_LOTTO_NUMBER_SIZE.getMessage());
-        }
-    }
-
-    private static void validateDuplicates(List<Integer> numbers) {
-        HashSet<Integer> set = new HashSet<>(numbers);
-        if (set.size() != numbers.size()) {
-            throw new IllegalArgumentException(ErrorMessages.INVALID_LOTTO_NUMBER_DUPLICATES.getMessage());
-        }
-    }
-
-    private static void validateNumbersRange(List<Integer> numbers) {
-        for (Integer number : numbers) {
-            if(number < 1 || number > 45) {
-                throw new IllegalArgumentException(ErrorMessages.INVALID_LOTTO_NUMBER_RANGE.getMessage());
-            }
-        }
-    }
-
     public int countMatches(Lotto winningLotto) {
         return (int) numbers.stream()
                 .filter(winningLotto::isContains)
@@ -53,6 +36,39 @@ public class Lotto {
 
     public boolean isDuplicateBonusNumber(int bonusNumber) {
         return numbers.contains(bonusNumber);
+    }
+
+    private static void validateLottoSize(List<Integer> numbers) {
+        if (isLottoNumberSize(numbers)) {
+            throw new IllegalArgumentException(ErrorMessages.INVALID_LOTTO_NUMBER_SIZE.getMessage());
+        }
+    }
+
+    private static boolean isLottoNumberSize(List<Integer> numbers) {
+        return numbers.size() != LOTTO_NUMBER_COUNT;
+    }
+
+    private static void validateDuplicates(List<Integer> numbers) {
+        HashSet<Integer> duplicateNumbers = new HashSet<>(numbers);
+        if (isSameSize(numbers, duplicateNumbers)) {
+            throw new IllegalArgumentException(ErrorMessages.INVALID_LOTTO_NUMBER_DUPLICATES.getMessage());
+        }
+    }
+
+    private static void validateNumbersRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if(isNumberRange(number)) {
+                throw new IllegalArgumentException(ErrorMessages.INVALID_LOTTO_NUMBER_RANGE.getMessage());
+            }
+        }
+    }
+
+    private static boolean isSameSize(List<Integer> numbers, HashSet<Integer> duplicateNumbers) {
+        return duplicateNumbers.size() != numbers.size();
+    }
+
+    private static boolean isNumberRange(Integer number) {
+        return number < LOTTO_MIN_NUMBER || number > LOTTO_MAX_NUMBER;
     }
 
     private boolean isContains(Integer number) {
