@@ -21,7 +21,7 @@ public class LottoWinningResults {
             int count = lottoRankIntegerEntry.getValue();
             totalWinningPrice+= rank.getWinningAmount() * count;
         }
-        return (double) totalWinningPrice / purchaseAmount.getQuantity() * 100;
+        return (double) totalWinningPrice / purchaseAmount.getQuantity() * 100.0;
     }
 
     public Map<LottoRank, Integer> getLottoRankResults() {
