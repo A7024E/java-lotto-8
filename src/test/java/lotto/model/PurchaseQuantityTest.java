@@ -1,9 +1,11 @@
 package lotto.model;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
+import lotto.exception.ErrorMessages;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -42,4 +44,23 @@ class PurchaseQuantityTest {
         // then
         assertThat(quantity).isEqualTo(2);
     }
+
+    @DisplayName("구입 금액이 10만원을 초과할경우 예외가 발생한다")
+    @Test
+    void purchaseQuantityOverLimit(){
+        // when// then
+        assertThatThrownBy(()-> PurchaseQuantity.from(110000))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessages.INVALID_PURCHASE_AMOUNT_OVER_LIMIT.getMessage());
+    }
+
+    @DisplayName("구입 금액이 10만원을 초과할경우 예외가 발생핮지 않는다")
+    @Test
+    void purchaseQuantityNotOverLimit(){
+        // when// then
+        assertThatCode(()-> PurchaseQuantity.from(10000))
+                .doesNotThrowAnyException();
+    }
+
+
 }
