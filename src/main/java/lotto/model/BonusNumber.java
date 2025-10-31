@@ -21,9 +21,13 @@ public class BonusNumber {
     }
 
     private static void validateBonusNumberRange(int bonusNumber) {
-        if (bonusNumber < 1 || bonusNumber > 45) {
+        if (isRange(bonusNumber)) {
             throw new IllegalArgumentException(ErrorMessages.INVALID_BONUS_NUMBER_RANGE.getMessage());
         }
+    }
+
+    private static boolean isRange(int bonusNumber) {
+        return bonusNumber < 1 || bonusNumber > 45;
     }
 
     @Override
