@@ -16,12 +16,13 @@ public class LottoGenerator {
         return new LottoGenerator(randomNumberStrategy);
     }
 
-    public List<Lotto> issueLottos(int quantity) {
+    public Lottos issueLottos(int quantity) {
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < quantity; i++) {
-            lottos.add(issue());
+            Lotto lotto = issue();
+            lottos.add(lotto);
         }
-        return lottos;
+        return Lottos.from(lottos);
     }
 
     private Lotto issue() {
