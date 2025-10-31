@@ -23,9 +23,13 @@ public class InputValidation {
     }
 
     public static void validateDelimiter(String input) {
-        if (!input.matches("^-?\\d+(,-?\\d+)*$")) {
+        if (isDelimiterMatches(input)) {
             throw new IllegalArgumentException(ErrorMessages.INVALID_WINNING_NUMBER_DELIMITER.getMessage());
         }
+    }
+
+    private static boolean isDelimiterMatches(String input) {
+        return !input.matches("^-?\\d+(,-?\\d+)*$");
     }
 
     private static boolean isNullOrEmpty(String input) {
