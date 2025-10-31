@@ -15,7 +15,7 @@ public class LottoWinningResults {
         return new LottoWinningResults(lottoRankResults);
     }
 
-    public double calculateRateOfReturn(PurchaseQuantity purchaseAmount) {
+    public double calculateRateOfReturn(PurchaseAmount purchaseAmount) {
         long proceeds = calculateTotalWinningPrice();
         int investmentAmount = purchaseAmount.getQuantity();
         return calculatePercentage(proceeds, investmentAmount);

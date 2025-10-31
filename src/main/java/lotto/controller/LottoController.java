@@ -6,7 +6,7 @@ import lotto.model.LottoGenerator;
 import lotto.model.LottoWinningCalculator;
 import lotto.model.LottoWinningResults;
 import lotto.model.Lottos;
-import lotto.model.PurchaseQuantity;
+import lotto.model.PurchaseAmount;
 import lotto.model.WinningNumbers;
 import lotto.model.lottonumberstrategy.LottoNumberStrategy;
 import lotto.view.InputView;
@@ -23,7 +23,7 @@ public class LottoController {
     }
 
     public void run() {
-        PurchaseQuantity purchaseAmount = tryInputPurchaseAmount();
+        PurchaseAmount purchaseAmount = tryInputPurchaseAmount();
         Lottos lottos = issueLottos(purchaseAmount);
         WinningNumbers winningNumbers = issueWinningNumbers();
         LottoWinningResults winningResult = getWinningResult(lottos, winningNumbers);
@@ -31,7 +31,7 @@ public class LottoController {
         disPlayRateOfReturn(winningResult, purchaseAmount);
     }
 
-    private Lottos issueLottos(PurchaseQuantity purchaseAmount) {
+    private Lottos issueLottos(PurchaseAmount purchaseAmount) {
         int quantity = purchaseAmount.calculateQuantity();
         Lottos lottos = issueLottoByQuantity(quantity);
         displayIssuedLottoByQuantity(quantity, lottos);
@@ -57,17 +57,17 @@ public class LottoController {
         return winningCalculator.calculateWinningResults(lottos, winningNumbers);
     }
 
-    private void disPlayRateOfReturn(LottoWinningResults winningResult, PurchaseQuantity purchaseAmount) {
+    private void disPlayRateOfReturn(LottoWinningResults winningResult, PurchaseAmount purchaseAmount) {
         double rateOfReturn = winningResult.calculateRateOfReturn(purchaseAmount);
         outputView.printRateOrReturn(rateOfReturn);
     }
 
-    private PurchaseQuantity tryInputPurchaseAmount() {
+    private PurchaseAmount tryInputPurchaseAmount() {
         while (true) {
             try {
                 outputView.printPurchaseAmountMessage();
                 int purchaseAmount = inputView.inputPurchaseAmount();
-                return PurchaseQuantity.from(purchaseAmount);
+                return PurchaseAmount.from(purchaseAmount);
             } catch (IllegalArgumentException exception) {
                 outputView.printErrorMessage(exception.getMessage());
             }

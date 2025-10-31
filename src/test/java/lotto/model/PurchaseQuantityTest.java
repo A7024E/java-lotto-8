@@ -17,9 +17,9 @@ class PurchaseQuantityTest {
         // given
         int value = 2000;
         // when
-        PurchaseQuantity purchaseQuantity = PurchaseQuantity.from(value);
+        PurchaseAmount purchaseQuantity = PurchaseAmount.from(value);
         // then
-        assertThat(purchaseQuantity).isEqualTo(PurchaseQuantity.from(value));
+        assertThat(purchaseQuantity).isEqualTo(PurchaseAmount.from(value));
 
     }
 
@@ -28,7 +28,7 @@ class PurchaseQuantityTest {
     @ValueSource(strings = {"0","1111","9999","1001","1200"})
     void purchaseQuantityDividedByZero(int amount) {
         // given// when// then
-        assertThatThrownBy(()-> PurchaseQuantity.from(amount))
+        assertThatThrownBy(()-> PurchaseAmount.from(amount))
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
@@ -37,7 +37,7 @@ class PurchaseQuantityTest {
     @Test
     void amountQuantity(){
         // given
-        PurchaseQuantity purchaseQuantity = PurchaseQuantity.from(2000);
+        PurchaseAmount purchaseQuantity = PurchaseAmount.from(2000);
         // when
         int quantity = purchaseQuantity.calculateQuantity();
         // then
@@ -48,7 +48,7 @@ class PurchaseQuantityTest {
     @Test
     void purchaseQuantityOverLimit(){
         // when// then
-        assertThatThrownBy(()-> PurchaseQuantity.from(110000))
+        assertThatThrownBy(()-> PurchaseAmount.from(110000))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessages.INVALID_PURCHASE_AMOUNT_OVER_LIMIT.getMessage());
     }
@@ -57,7 +57,7 @@ class PurchaseQuantityTest {
     @Test
     void purchaseQuantityNotOverLimit(){
         // when// then
-        assertThatCode(()-> PurchaseQuantity.from(10000))
+        assertThatCode(()-> PurchaseAmount.from(10000))
                 .doesNotThrowAnyException();
     }
 

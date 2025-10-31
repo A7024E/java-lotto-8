@@ -15,7 +15,7 @@ class LottoWinningResultsTest {
         Map<LottoRank,Integer> lottoRank = new EnumMap<>(LottoRank.class);
         lottoRank.put(LottoRank.FIFTH,1);
         LottoWinningResults results = LottoWinningResults.from(lottoRank);
-        PurchaseQuantity quantity = PurchaseQuantity.from(8000);
+        PurchaseAmount quantity = PurchaseAmount.from(8000);
         // when
         double prize = results.calculateRateOfReturn(quantity);
         // then
