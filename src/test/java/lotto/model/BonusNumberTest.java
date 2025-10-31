@@ -37,7 +37,7 @@ class BonusNumberTest {
     @Test
     void isMatch() {
         // given
-        Lotto lotto = Lotto.of(List.of(1,2,3,4,5,6));
+        Lotto lotto = Lotto.from(List.of(1,2,3,4,5,6));
         BonusNumber bonusNumber = BonusNumber.of(2);
         // when
         boolean matches = bonusNumber.isMatches(lotto);

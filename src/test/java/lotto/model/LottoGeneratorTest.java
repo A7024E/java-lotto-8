@@ -15,17 +15,17 @@ class LottoGeneratorTest {
         int quantity = 5;
         LottoGenerator lottoGenerator = LottoGenerator.from(() -> lottoNumbers);
         // when
-        List<Lotto> lottos = lottoGenerator.issueLottos(quantity);
+        Lottos lottos = lottoGenerator.issueLottos(quantity);
         // then
         List<Lotto> compareLottos = List.of(
-                Lotto.of(List.of(1, 2, 3, 4, 5, 6)),
-                Lotto.of(List.of(1, 2, 3, 4, 5, 6)),
-                Lotto.of(List.of(1, 2, 3, 4, 5, 6)),
-                Lotto.of(List.of(1, 2, 3, 4, 5, 6)),
-                Lotto.of(List.of(1, 2, 3, 4, 5, 6))
+                Lotto.from(List.of(1, 2, 3, 4, 5, 6)),
+                Lotto.from(List.of(1, 2, 3, 4, 5, 6)),
+                Lotto.from(List.of(1, 2, 3, 4, 5, 6)),
+                Lotto.from(List.of(1, 2, 3, 4, 5, 6)),
+                Lotto.from(List.of(1, 2, 3, 4, 5, 6))
         );
 
-        assertThat(lottos).hasSize(5).isEqualTo(compareLottos);
+        assertThat(lottos.getLottos()).hasSize(5).isEqualTo(compareLottos);
 
     }
 

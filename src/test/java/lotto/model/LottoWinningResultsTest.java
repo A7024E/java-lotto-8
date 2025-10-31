@@ -1,7 +1,6 @@
 package lotto.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.EnumMap;
 import java.util.Map;
@@ -18,7 +17,7 @@ class LottoWinningResultsTest {
         LottoWinningResults results = LottoWinningResults.from(lottoRank);
         PurchaseQuantity quantity = PurchaseQuantity.from(8000);
         // when
-        double prize = results.calculateTotalWinningPrice(quantity);
+        double prize = results.calculateRateOfReturn(quantity);
         // then
         assertThat(prize).isEqualTo(62.5);
 

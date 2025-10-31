@@ -14,10 +14,10 @@ class LottoWinningCalculatorTest {
     void calculateMatchRank() {
         // given
         Lottos lottos = Lottos.from(List.of(
-                Lotto.of(List.of(1, 2, 3, 4, 5, 6)),
-                Lotto.of(List.of(7, 8, 9, 10, 11, 12))
+                Lotto.from(List.of(1, 2, 3, 4, 5, 6)),
+                Lotto.from(List.of(7, 8, 9, 10, 11, 12))
         ));
-        WinningNumbers winningNumbers = WinningNumbers.of(Lotto.of(List.of(1, 2, 3, 4, 5, 6)), 7);
+        WinningNumbers winningNumbers = WinningNumbers.of(Lotto.from(List.of(1, 2, 3, 4, 5, 6)), 7);
 
         // when
         LottoWinningCalculator lottoWinningCalculator = LottoWinningCalculator.create();

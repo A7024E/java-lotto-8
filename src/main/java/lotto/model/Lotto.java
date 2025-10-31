@@ -8,12 +8,12 @@ import lotto.exception.ErrorMessages;
 public class Lotto {
     private final List<Integer> numbers;
 
-    private Lotto(List<Integer> numbers) {
+    protected Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
     }
 
-    public static Lotto of(List<Integer> numbers) {
+    public static Lotto from(List<Integer> numbers) {
         return new Lotto(numbers);
     }
 
@@ -58,8 +58,9 @@ public class Lotto {
         return this.numbers.contains(number);
     }
 
-    public List<Integer> getNumbers() {
-        return List.copyOf(numbers);
+    @Override
+    public String toString() {
+      return numbers.toString();
     }
 
     @Override

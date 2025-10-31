@@ -3,6 +3,7 @@ package lotto.model;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringJoiner;
 
 public class Lottos {
     private final List<Lotto> lottos;
@@ -22,5 +23,18 @@ public class Lottos {
             lottoRanks.put(LottoRank,lottoRanks.getOrDefault(LottoRank,0) + 1);
         }
         return lottoRanks;
+    }
+
+    @Override
+    public String toString() {
+        StringJoiner sj = new StringJoiner("\n");
+        for (Lotto lotto : lottos) {
+            sj.add(lotto.toString());
+        }
+        return sj.toString();
+    }
+
+    public List<Lotto> getLottos() {
+        return lottos;
     }
 }

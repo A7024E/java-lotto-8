@@ -3,7 +3,6 @@ package lotto.model;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 import lotto.exception.ErrorMessages;
 import org.junit.jupiter.api.DisplayName;
