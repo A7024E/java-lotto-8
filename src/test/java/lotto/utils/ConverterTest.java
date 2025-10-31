@@ -18,6 +18,7 @@ class ConverterTest {
         // then
         assertThat(number).isEqualTo(1);
     }
+
     @DisplayName("Intger를 가지는 리스트를 만든다")
     @Test
     void toIntList(){
