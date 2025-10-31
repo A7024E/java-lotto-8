@@ -13,7 +13,8 @@ public class OutputView {
     }
 
     public void printQuantity(int quantity) {
-        System.out.println(LINE_SEPARATOR + quantity + "개를 구매했습니다.");
+        String formatingQuantity = OutputFormatter.formatingQuantity(quantity);
+        System.out.println(formatingQuantity);
     }
 
     public void printLottos(Lottos lottos) {

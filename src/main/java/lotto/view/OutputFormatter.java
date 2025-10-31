@@ -11,6 +11,10 @@ public class OutputFormatter {
     private static final String RATE_OF_RETURN_FORMAT = "%,.1f";
     private static final long MISS = 0L;
 
+    public static String formatingQuantity(int quantity) {
+        return String.format("%s%d개를 구매했습니다.", LINE_SEPARATOR, quantity);
+    }
+
     public static String formatingWinningResult(Map<LottoRank, Integer> winningResult) {
         return formatResult(winningResult);
     }
