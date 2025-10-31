@@ -1,9 +1,6 @@
 package lotto.view;
 
-import java.util.List;
 import java.util.Map;
-import java.util.StringJoiner;
-import lotto.model.Lotto;
 import lotto.model.LottoRank;
 import lotto.model.Lottos;
 

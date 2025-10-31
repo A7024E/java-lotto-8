@@ -27,11 +27,11 @@ public class Lottos {
 
     @Override
     public String toString() {
-        StringJoiner sj = new StringJoiner("\n");
+        StringJoiner lottoLines = new StringJoiner("\n");
         for (Lotto lotto : lottos) {
-            sj.add(lotto.toString());
+            lottoLines.add(lotto.toString());
         }
-        return sj.toString();
+        return lottoLines.toString();
     }
 
     public List<Lotto> getLottos() {

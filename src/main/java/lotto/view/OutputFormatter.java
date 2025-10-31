@@ -9,7 +9,7 @@ public class OutputFormatter {
 
     private static final String LINE_SEPARATOR = System.lineSeparator();
     private static final String RATE_OF_RETURN_FORMAT = "%,.1f";
-    private static final long NO_LUCK_AMOUNT = 0L;
+    private static final long MISS = 0L;
 
     public static String formatingWinningResult(Map<LottoRank, Integer> winningResult) {
         return formatResult(winningResult);
@@ -27,7 +27,7 @@ public class OutputFormatter {
     }
 
     private static boolean isWinningAmount(LottoRank lottoRank) {
-        return lottoRank.getWinningAmount() > NO_LUCK_AMOUNT;
+        return lottoRank.getWinningAmount() > MISS;
     }
 
     private static String createFormat(Map<LottoRank, Integer> winningResult, LottoRank lottoRank) {
