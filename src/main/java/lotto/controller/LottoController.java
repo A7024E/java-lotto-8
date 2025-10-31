@@ -1,7 +1,6 @@
 package lotto.controller;
 
 import java.util.List;
-import lotto.model.BonusNumber;
 import lotto.model.Lotto;
 import lotto.model.LottoGenerator;
 import lotto.model.LottoWinningCalculator;
@@ -14,6 +13,7 @@ import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class LottoController {
+
     private final InputView inputView;
     private final OutputView outputView;
 
@@ -23,36 +23,46 @@ public class LottoController {
     }
 
     public void run() {
-        PurchaseQuantity purchaseQuantity = tryPurchaseAmount();
-
-        LottoGenerator lottoGenerator = LottoGenerator.from(new LottoNumberStrategy());
-        int quantity = purchaseQuantity.calculateQuantity();
-        List<Lotto> lottos = lottoGenerator.issueLottos(quantity);
-
-        outputView.printQuantity(quantity);
-        outputView.printLottos(lottos);
-
+        PurchaseQuantity purchaseAmount = tryInputPurchaseAmount();
+        Lottos lottos = issueLottos(purchaseAmount);
         WinningNumbers winningNumbers = issueWinningNumbers();
-
-        LottoWinningResults winningResult = calculateWinningResults(lottos, winningNumbers);
-        outputView.printWinningResultMessage();
-        outputView.printLottoWinningResult(winningResult.getLottoRankResults());
-
-        double prize = winningResult.calculateTotalWinningPrice(purchaseQuantity);
-        outputView.printRateOrReturn(prize);
+        LottoWinningResults winningResult = getWinningResult(lottos, winningNumbers);
+        displayWinningResult(winningResult);
+        disPlayRateOfReturn(winningResult, purchaseAmount);
     }
 
-    private LottoWinningResults calculateWinningResults(List<Lotto> lottos, WinningNumbers winningNumbers) {
-        LottoWinningCalculator winningCalculator = LottoWinningCalculator.create();
-        return winningCalculator.calculateWinningResults(Lottos.from(lottos), winningNumbers);
+    private Lottos issueLottos(PurchaseQuantity purchaseAmount) {
+        int quantity = purchaseAmount.calculateQuantity();
+        Lottos lottos = issueLottoByQuantity(quantity);
+        displayIssuedLottoByQuantity(quantity, lottos);
+        return lottos;
+    }
+
+    private Lottos issueLottoByQuantity(int quantity) {
+        LottoGenerator lottoGenerator = LottoGenerator.from(new LottoNumberStrategy());
+        return lottoGenerator.issueLottos(quantity);
     }
 
     private WinningNumbers issueWinningNumbers() {
-        Lotto winningLottoNumbers = tryWinningLottoNumbers();
-        return tryBonusNumber(winningLottoNumbers);
+        Lotto winningLottoNumbers = tryInputWinningLottoNumbers();
+        return tryInputBonusNumber(winningLottoNumbers);
     }
 
-    private PurchaseQuantity tryPurchaseAmount() {
+    private LottoWinningResults getWinningResult(Lottos lottos, WinningNumbers winningNumbers) {
+        return calculateWinningByLotto(lottos, winningNumbers);
+    }
+
+    private LottoWinningResults calculateWinningByLotto(Lottos lottos, WinningNumbers winningNumbers) {
+        LottoWinningCalculator winningCalculator = LottoWinningCalculator.create();
+        return winningCalculator.calculateWinningResults(lottos, winningNumbers);
+    }
+
+    private void disPlayRateOfReturn(LottoWinningResults winningResult, PurchaseQuantity purchaseAmount) {
+        double rateOfReturn = winningResult.calculateRateOfReturn(purchaseAmount);
+        outputView.printRateOrReturn(rateOfReturn);
+    }
+
+    private PurchaseQuantity tryInputPurchaseAmount() {
         while (true) {
             try {
                 outputView.printPurchaseAmountMessage();
@@ -64,19 +74,19 @@ public class LottoController {
         }
     }
 
-    private Lotto tryWinningLottoNumbers() {
+    private Lotto tryInputWinningLottoNumbers() {
         while (true) {
             try {
                 outputView.printWinningNumberMessage();
                 List<Integer> winningLottoNumbers = inputView.inputWinningNumber();
-                return Lotto.of(winningLottoNumbers);
+                return Lotto.from(winningLottoNumbers);
             } catch (IllegalArgumentException exception) {
                 outputView.printErrorMessage(exception.getMessage());
             }
         }
     }
 
-    private WinningNumbers tryBonusNumber(Lotto winningLottoNumbers) {
+    private WinningNumbers tryInputBonusNumber(Lotto winningLottoNumbers) {
         while (true) {
             try {
                 outputView.printBonusMessage();
@@ -87,4 +97,14 @@ public class LottoController {
             }
         }
     }
+
+    private void displayIssuedLottoByQuantity(int quantity, Lottos lottos) {
+        outputView.printQuantity(quantity);
+        outputView.printLottos(lottos);
+    }
+
+    private void displayWinningResult(LottoWinningResults winningResult) {
+        outputView.printLottoWinningResult(winningResult.getLottoRankResults());
+    }
+
 }
