@@ -8,10 +8,11 @@ public class Converter {
         return Integer.parseInt(input);
     }
 
-    public static List<Integer> toIntList(String[] inputs) {
+    public static List<Integer> toIntList(String input) {
+        String[] inputs = input.split(",");
         List<Integer> numbers = new ArrayList<>();
-        for (String input : inputs) {
-            numbers.add(toInt(input));
+        for (String inputNumber : inputs) {
+            numbers.add(toInt(inputNumber));
         }
         return numbers;
     }

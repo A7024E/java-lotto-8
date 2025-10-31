@@ -17,11 +17,10 @@ public class InputView {
 
     public List<Integer> inputWinningNumber() {
         String input = Console.readLine();
-        String[] inputs = input.split(",");
         InputValidation.validateNullOrEmpty(input);
         InputValidation.validateBlankContains(input);
         InputValidation.validateDelimiter(input);
-        return Converter.toIntList(inputs);
+        return Converter.toIntList(input);
     }
 
     public int inputBonusNumber() {
