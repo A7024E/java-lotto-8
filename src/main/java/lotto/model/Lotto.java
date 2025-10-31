@@ -6,6 +6,7 @@ import java.util.Objects;
 import lotto.exception.ErrorMessages;
 
 public class Lotto {
+
     private final List<Integer> numbers;
 
     protected Lotto(List<Integer> numbers) {

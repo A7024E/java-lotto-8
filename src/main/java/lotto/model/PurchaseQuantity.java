@@ -4,6 +4,7 @@ import java.util.Objects;
 import lotto.exception.ErrorMessages;
 
 public class PurchaseQuantity {
+
     private int quantity;
 
     private PurchaseQuantity(int quantity) {

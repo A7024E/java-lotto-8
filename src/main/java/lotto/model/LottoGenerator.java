@@ -6,6 +6,7 @@ import java.util.Objects;
 import lotto.model.lottonumberstrategy.RandomNumberStrategy;
 
 public class LottoGenerator {
+
     private final RandomNumberStrategy randomNumberStrategy;
 
     private LottoGenerator(RandomNumberStrategy randomNumberStrategy) {

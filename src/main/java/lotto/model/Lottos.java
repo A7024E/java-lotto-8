@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.StringJoiner;
 
 public class Lottos {
+
     private final List<Lotto> lottos;
 
     private Lottos(List<Lotto> lottos) {

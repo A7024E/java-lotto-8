@@ -3,6 +3,7 @@ package lotto.model;
 import java.util.Arrays;
 
 public enum LottoRank {
+
     MISS("3개 미만 일치 (0원)", 0L, (matchCount, bonus) -> matchCount < 3 && !bonus),
     FIFTH("3개 일치 (5,000원)", 5_000L, (matchCount, bonus) -> matchCount == 3 && !bonus),
     FOURTH("4개 일치 (50,000원)", 50_000L, (matchCount, bonus) -> matchCount == 4 && !bonus),

@@ -22,6 +22,4 @@ public class LottoNumberStrategy implements RandomNumberStrategy {
         Collections.sort(sortedNumbers);
         return sortedNumbers;
     }
-
-
 }

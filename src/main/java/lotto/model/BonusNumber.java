@@ -4,6 +4,7 @@ import java.util.Objects;
 import lotto.exception.ErrorMessages;
 
 public class BonusNumber {
+
     private final int bonusNumber;
 
     private BonusNumber(int bonusNumber) {

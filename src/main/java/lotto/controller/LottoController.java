@@ -106,5 +106,4 @@ public class LottoController {
     private void displayWinningResult(LottoWinningResults winningResult) {
         outputView.printLottoWinningResult(winningResult.getLottoRankResults());
     }
-
 }
