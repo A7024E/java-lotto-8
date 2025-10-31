@@ -25,17 +25,17 @@ class PurchaseQuantityTest {
 
     @DisplayName("구입 금액이 1000원 단위로 나누어 떨어지지 않으면 예외가 발생한다")
     @ParameterizedTest
-    @ValueSource(strings = {"0","1111","9999","1001","1200"})
+    @ValueSource(strings = {"0", "1111", "9999", "1001", "1200"})
     void purchaseQuantityDividedByZero(int amount) {
         // given// when// then
-        assertThatThrownBy(()-> PurchaseAmount.from(amount))
+        assertThatThrownBy(() -> PurchaseAmount.from(amount))
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
 
     @DisplayName("구입 금액을 계산할수있다")
     @Test
-    void amountQuantity(){
+    void amountQuantity() {
         // given
         PurchaseAmount purchaseQuantity = PurchaseAmount.from(2000);
         // when
@@ -46,20 +46,18 @@ class PurchaseQuantityTest {
 
     @DisplayName("구입 금액이 10만원을 초과할경우 예외가 발생한다")
     @Test
-    void purchaseQuantityOverLimit(){
+    void purchaseQuantityOverLimit() {
         // when// then
-        assertThatThrownBy(()-> PurchaseAmount.from(110000))
+        assertThatThrownBy(() -> PurchaseAmount.from(110000))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessages.INVALID_PURCHASE_AMOUNT_OVER_LIMIT.getMessage());
     }
 
     @DisplayName("구입 금액이 10만원을 초과할경우 예외가 발생핮지 않는다")
     @Test
-    void purchaseQuantityNotOverLimit(){
+    void purchaseQuantityNotOverLimit() {
         // when// then
-        assertThatCode(()-> PurchaseAmount.from(10000))
+        assertThatCode(() -> PurchaseAmount.from(10000))
                 .doesNotThrowAnyException();
     }
-
-
 }

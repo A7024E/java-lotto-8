@@ -5,7 +5,7 @@ import java.util.Map.Entry;
 
 public class LottoWinningResults {
 
-    private final Map<LottoRank,Integer> lottoRankResults;
+    private final Map<LottoRank, Integer> lottoRankResults;
 
     private LottoWinningResults(Map<LottoRank, Integer> lottoRankResults) {
         this.lottoRankResults = lottoRankResults;

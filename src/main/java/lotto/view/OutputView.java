@@ -50,7 +50,6 @@ public class OutputView {
         System.out.println(formatRateOfReturn);
     }
 
-
     public void printErrorMessage(String exceptionMessage) {
         System.out.println(exceptionMessage);
     }

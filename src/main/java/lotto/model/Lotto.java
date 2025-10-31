@@ -7,11 +7,11 @@ import lotto.exception.ErrorMessages;
 
 public class Lotto {
 
-    private final List<Integer> numbers;
-
     private static final int LOTTO_NUMBER_COUNT = 6;
     private static final int LOTTO_MIN_NUMBER = 1;
     private static final int LOTTO_MAX_NUMBER = 45;
+
+    private final List<Integer> numbers;
 
     protected Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -53,7 +53,7 @@ public class Lotto {
 
     private static void validateNumbersRange(List<Integer> numbers) {
         for (Integer number : numbers) {
-            if(isRange(number)) {
+            if (isRange(number)) {
                 throw new IllegalArgumentException(ErrorMessages.INVALID_LOTTO_NUMBER_RANGE.getMessage());
             }
         }
@@ -77,7 +77,7 @@ public class Lotto {
 
     @Override
     public String toString() {
-      return numbers.toString();
+        return numbers.toString();
     }
 
     @Override

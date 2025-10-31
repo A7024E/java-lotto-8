@@ -7,7 +7,7 @@ import lotto.utils.Converter;
 
 public class InputView {
 
-    public int inputPurchaseAmount(){
+    public int inputPurchaseAmount() {
         String input = Console.readLine();
         InputValidation.validateNullOrEmpty(input);
         InputValidation.validateBlankContains(input);
@@ -15,7 +15,7 @@ public class InputView {
         return Converter.toInt(input);
     }
 
-    public List<Integer> inputWinningNumber(){
+    public List<Integer> inputWinningNumber() {
         String input = Console.readLine();
         String[] inputs = input.split(",");
         InputValidation.validateNullOrEmpty(input);
@@ -24,7 +24,7 @@ public class InputView {
         return Converter.toIntList(inputs);
     }
 
-    public int inputBonusNumber(){
+    public int inputBonusNumber() {
         String input = Console.readLine();
         InputValidation.validateNullOrEmpty(input);
         InputValidation.validateBlankContains(input);

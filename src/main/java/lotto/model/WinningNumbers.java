@@ -10,7 +10,7 @@ public class WinningNumbers {
     private BonusNumber bonusNumber;
 
     private WinningNumbers(Lotto winningNumbers, int bonusNumber) {
-        validateDuplicate(winningNumbers,bonusNumber);
+        validateDuplicate(winningNumbers, bonusNumber);
         this.winningNumbers = winningNumbers;
         this.bonusNumber = BonusNumber.of(bonusNumber);
     }

@@ -35,19 +35,19 @@ public class PurchaseAmount {
     }
 
     private static void validateOverLimitAmount(int quantity) {
-        if(quantity > MAX_PURCHASE_AMOUNT){
+        if (quantity > MAX_PURCHASE_AMOUNT) {
             throw new IllegalArgumentException(ErrorMessages.INVALID_PURCHASE_AMOUNT_OVER_LIMIT.getMessage());
         }
     }
 
     private static void validateMinimumAmount(int quantity) {
-        if(quantity < LOTTO_PRICE){
+        if (quantity < LOTTO_PRICE) {
             throw new IllegalArgumentException(ErrorMessages.INVALID_PURCHASE_AMOUNT_MINIMUM.getMessage());
         }
     }
 
     private static void validateDivideAmount(int quantity) {
-        if(quantity % LOTTO_PRICE != 0) {
+        if (quantity % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(ErrorMessages.INVALID_NOT_DIVIDE_PURCHASE_AMOUNT.getMessage());
         }
     }

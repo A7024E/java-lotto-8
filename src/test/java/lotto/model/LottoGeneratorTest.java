@@ -28,5 +28,4 @@ class LottoGeneratorTest {
         assertThat(lottos.getLottos()).hasSize(5).isEqualTo(compareLottos);
 
     }
-
 }

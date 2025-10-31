@@ -1,11 +1,8 @@
 package lotto.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.HashMap;
 import java.util.Map;
-import lotto.model.Lotto;
 import lotto.model.LottoRank;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,7 +10,7 @@ import org.junit.jupiter.api.Test;
 class OutputFormatterTest {
     @DisplayName("구입 수의 출력 형식을 포맷팅 한다")
     @Test
-    void formatingQuantity(){
+    void formatingQuantity() {
         // given
         int quantity = 8;
         // when
@@ -24,7 +21,7 @@ class OutputFormatterTest {
 
     @DisplayName("당첨 내역 출력형식을 포맷팅 할수있다.")
     @Test
-    void formatingWinningResult(){
+    void formatingWinningResult() {
         // given
         Map<LottoRank, Integer> winningResult = Map.of(
                 LottoRank.FIRST, 1,
@@ -47,7 +44,7 @@ class OutputFormatterTest {
 
     @DisplayName("총 수익률에 출력 형식 소수점 둘째 자리에서 올림하여 포맷팅 할수 있다.")
     @Test
-    void formatingRateOfReturnDecimals(){
+    void formatingRateOfReturnDecimals() {
         // given
         double rateOfReturn = 62.500000;
         // when

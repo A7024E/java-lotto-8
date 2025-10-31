@@ -17,11 +17,11 @@ public class Lottos {
         return new Lottos(lottos);
     }
 
-    public Map<LottoRank,Integer> calculateResults(WinningNumbers winningNumbers) {
-        Map<LottoRank,Integer> lottoRanks = new EnumMap<>(LottoRank.class);
+    public Map<LottoRank, Integer> calculateResults(WinningNumbers winningNumbers) {
+        Map<LottoRank, Integer> lottoRanks = new EnumMap<>(LottoRank.class);
         for (Lotto lotto : lottos) {
             LottoRank LottoRank = winningNumbers.calculateRank(lotto);
-            lottoRanks.put(LottoRank,lottoRanks.getOrDefault(LottoRank,0) + 1);
+            lottoRanks.put(LottoRank, lottoRanks.getOrDefault(LottoRank, 0) + 1);
         }
         return lottoRanks;
     }

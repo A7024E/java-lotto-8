@@ -21,7 +21,8 @@ class LottoWinningCalculatorTest {
 
         // when
         LottoWinningCalculator lottoWinningCalculator = LottoWinningCalculator.create();
-        LottoWinningResults lottoWinningResults = lottoWinningCalculator.calculateWinningResults(lottos,winningNumbers);
+        LottoWinningResults lottoWinningResults = lottoWinningCalculator.calculateWinningResults(lottos,
+                winningNumbers);
         // then
         Map<LottoRank, Integer> result = Map.of(
                 LottoRank.FIRST, 1,
@@ -31,5 +32,4 @@ class LottoWinningCalculatorTest {
         assertThat(lottoWinningResults.getLottoRankResults())
                 .isEqualTo(result);
     }
-
 }

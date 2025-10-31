@@ -10,10 +10,10 @@ import org.junit.jupiter.api.Test;
 class LottoWinningResultsTest {
     @DisplayName("총 수익률을 계산한다")
     @Test
-    void calculateWinningPrize(){
+    void calculateWinningPrize() {
         // given
-        Map<LottoRank,Integer> lottoRank = new EnumMap<>(LottoRank.class);
-        lottoRank.put(LottoRank.FIFTH,1);
+        Map<LottoRank, Integer> lottoRank = new EnumMap<>(LottoRank.class);
+        lottoRank.put(LottoRank.FIFTH, 1);
         LottoWinningResults results = LottoWinningResults.from(lottoRank);
         PurchaseAmount quantity = PurchaseAmount.from(8000);
         // when
@@ -22,5 +22,4 @@ class LottoWinningResultsTest {
         assertThat(prize).isEqualTo(62.5);
 
     }
-
 }

@@ -25,10 +25,10 @@ class BonusNumberTest {
 
     @DisplayName("보너스 번호의 범위가 1 부터 45 까지의 범위가 아니라면 예외를 발생한다.")
     @ParameterizedTest
-    @ValueSource(strings = {"0","46"})
+    @ValueSource(strings = {"0", "46"})
     void generateBonusNumberWithInvalidNumber(int bonus) {
         // when// then
-        assertThatThrownBy(()-> BonusNumber.of(bonus))
+        assertThatThrownBy(() -> BonusNumber.of(bonus))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessages.INVALID_BONUS_NUMBER_RANGE.getMessage());
     }
@@ -37,12 +37,11 @@ class BonusNumberTest {
     @Test
     void isMatch() {
         // given
-        Lotto lotto = Lotto.from(List.of(1,2,3,4,5,6));
+        Lotto lotto = Lotto.from(List.of(1, 2, 3, 4, 5, 6));
         BonusNumber bonusNumber = BonusNumber.of(2);
         // when
         boolean matches = bonusNumber.isMatches(lotto);
         // then
         assertThat(matches).isTrue();
     }
-
 }
