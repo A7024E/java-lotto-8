@@ -6,8 +6,8 @@ import lotto.exception.ErrorMessages;
 
 public class WinningNumbers {
 
-    private Lotto winningNumbers;
-    private BonusNumber bonusNumber;
+    private final Lotto winningNumbers;
+    private final BonusNumber bonusNumber;
 
     private WinningNumbers(Lotto winningNumbers, int bonusNumber) {
         validateDuplicate(winningNumbers, bonusNumber);
