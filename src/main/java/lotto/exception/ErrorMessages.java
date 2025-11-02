@@ -9,7 +9,7 @@ public enum ErrorMessages {
     INVALID_NOT_DIVIDE_PURCHASE_AMOUNT("금액은 1000원 단위로 입력해야 합니다."),
     INVALID_PURCHASE_AMOUNT_MINIMUM("시작 금액은 1000원 부터입니다."),
     INVALID_PURCHASE_AMOUNT_OVER_LIMIT("구입 금액은 10만원을 초과할 수 없습니다."),
-    INVALID_LOTTO_NUMBER_SIZE("로또 번호는 6개여야 합니다."),
+    INVALID_LOTTO_NUMBER_SIZE("번호는 6개여야 합니다."),
     INVALID_LOTTO_NUMBER_RANGE("로또 번호는 1부터 45까지 입니다."),
     INVALID_LOTTO_NUMBER_DUPLICATES("로또 번호는 중복될 수 없습니다."),
     INVALID_WINNING_NUMBER_DELIMITER("당첨 번호는 공백없이 쉼표로 구분된 정수들로 입력해야 합니다."),
